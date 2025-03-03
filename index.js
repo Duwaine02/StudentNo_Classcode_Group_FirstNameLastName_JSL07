@@ -10,25 +10,36 @@ document.addEventListener('DOMContentLoaded', function () {
     cardForm.addEventListener('submit', function (e) {
       e.preventDefault();
   
-      // 🚨 Get input values
+      // 🚨 This fetches the values from the html file 
       const studentNameInput = document.getElementById('studentName');
-      const personalMessageInput = ;
-      const courseNameInput = ; 
+      const personalMessageInput = document.getElementById('personalMessage') ;
+      const courseNameInput = document.getElementById('courseNameInput'); 
   
       const studentName = studentNameInput.value;
       const personalMessage = personalMessageInput.value;
-      const courseName = courseNameInput ? courseNameInput.value : "a course"; // Fallback to "a course" if no input
+      console.log(courseNameInput)
+      // Element courseNameInput checks if the value of the course name exists if it does it shows the value if it doesnt its displays a course
+      const courseName = courseNameInput.value ? courseNameInput.value : "a course"; // Fallback to "a course" if no input
   
       if (studentName.trim() === '' || personalMessage.trim() === '') {
         alert('Please fill in all fields');
         return;
       }
   
-      // 🚨 Generate certificate content dynamically
-      certificateContent. = `
+      // 🚨 Generate certificate content 
+      certificateContent.innerHTML = `
+      <h1>Certificate of Achievement!</h1>
+      <br><p>This is to certify that</p>
       <h3>${studentName}</h3>
+      <br><p>has almost completed</p>
+      <h3>${courseName}</h3>
+      <br>
+      <p>Congratulations on your hard work and dedication! 🎉;</p>
+       <img src="logo.png" alt="Logo" style="width: 300px; display: block; margin: 0 auto;">
+     <h3>${personalMessage}</h3>
     `;
-    
+
+
       //  Display the modal
       modal.style.display = 'block';
   
@@ -39,8 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   
     //  🚨 Close the modal when the close button is clicked
-    closeModal.('', function () {
+    closeModal.addEventListener('click', function () { // The AddEventListener listen for any event like a click in this case
       
     });
   });
-  
